@@ -1,0 +1,3 @@
+- Deploy on `render.sh`
+- CI pipeline
+- CD pipeline

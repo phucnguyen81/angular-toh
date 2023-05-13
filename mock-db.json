@@ -1,0 +1,36 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Wolverine"
+    },
+    {
+      "id": 2,
+      "name": "Wonder Woman"
+    },
+    {
+      "id": 3,
+      "name": "Iron Man"
+    },
+    {
+      "id": 4,
+      "name": "Superman"
+    },
+    {
+      "id": 5,
+      "name": "Spiderman"
+    },
+    {
+      "id": 8,
+      "name": "Monster 8"
+    },
+    {
+      "id": 9,
+      "name": "Tanjiro"
+    },
+    {
+      "id": 10,
+      "name": "Van Helsing"
+    }
+  ]
+}
