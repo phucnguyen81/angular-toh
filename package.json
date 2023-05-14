@@ -11,7 +11,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:prod": "ng test --browsers=ChromeHeadless --watch=false",
-    "test:dev":  "ng test --browsers ChromeHeadless --watch"
+    "test:dev": "ng test --browsers ChromeHeadless --watch"
   },
   "private": true,
   "dependencies": {
