@@ -1,5 +1,3 @@
-- [ ] Add production environment that uses render.sh api
-  - Run on local: use the local api url
-  - Run on render.sh: use the render.sh api url 
-- CI pipeline
-- CD pipeline
+- Fix cold start issue with `render.sh`
+- Local CI pipeline 
+- CD pipeline ? auto deploy to github pages

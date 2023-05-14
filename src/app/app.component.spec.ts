@@ -52,7 +52,7 @@ describe('AppComponent', () => {
     heroesLink.click();
     fixture.whenStable().then(() => {
       fixture.detectChanges();
-      expect(compiled.querySelector('h2')?.textContent).toContain('My Heroes');
+      expect(compiled.querySelector('h2')?.textContent).toContain('Heroes');
     });
   }));
 

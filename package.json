@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start:api": "node index.mjs",
-    "start": "ng serve --host=0.0.0.0",
-    "build": "ng build --configuration=production",
-    "watch": "ng build --watch --configuration=development",
-    "test": "ng test --configuration=development --browsers=ChromeHeadless --watch"
+    "dev:api": "json-server --watch db.json --configuration development --host 0 --port 3000",
+    "dev:start": "ng serve --host 0 --port 4200 --configuration development",
+    "dev:test": "ng test --configuration development --browsers ChromeHeadless --watch",
+    "dev:build": "ng build --watch --configuration development",
+    "prod:api": "node index.mjs",
+    "prod:build": "ng build --configuration production",
+    "prod:deploy": "ng deploy"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +30,7 @@
     "@angular/cli": "~16.0.1",
     "@angular/compiler-cli": "^16.0.0",
     "@types/jasmine": "~4.3.0",
+    "angular-cli-ghpages": "^1.0.6",
     "cors": "^2.8.5",
     "jasmine-core": "~4.6.0",
     "json-serve": "^0.1.0",

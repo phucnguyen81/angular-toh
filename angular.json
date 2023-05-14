@@ -83,6 +83,18 @@
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
+          "configurations": {
+            "development": {
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
+            }
+          },
+          "defaultConfiguration": "development",
           "options": {
             "polyfills": [
               "zone.js",
@@ -97,6 +109,15 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/angular-toh/",
+            "branch": "gh-dist",
+            "name": "Angular Toh",
+            "email": "phucknguyen@gmail.com"
           }
         }
       }

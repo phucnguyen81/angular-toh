@@ -17,6 +17,7 @@ export class HeroService {
   constructor(private http: HttpClient, private alert: AppAlertService) { }
 
   getHeroes(): Observable<Hero[]> {
+    console.log('getHeroes', this.apiHeroesUrl);
     return this.alert.handleError(this.http.get<Hero[]>(this.apiHeroesUrl));
   }
 

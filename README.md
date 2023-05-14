@@ -3,6 +3,8 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
 It uses npm version `9.5.1`.
 
+The demo is at [Angular Toh](https://phucnguyen81.github.io/angular-toh).
+
 ## Project setup
 
 - Install [nvm](https://github.com/nvm-sh/nvm)
@@ -15,6 +17,10 @@ It uses npm version `9.5.1`.
 
 - Run `npm run start:api` to start the api server.
 - Run `npm run start` to start the Angular dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+## Deploy to GitHub Pages
+
+- Run `npm deploy` to deploy to GitHub Pages
 
 ## Code scaffolding
 
