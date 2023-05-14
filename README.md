@@ -1,9 +1,18 @@
 # AngularToh
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
-It uses npm version `9.5.1`.
+This is an updated version of the [Tour of Heroes](https://angular.io/tutorial/tour-of-heroes) tutorial.
+The frontend is hosted on [GitHub Pages](https://phucnguyen81.github.io/angular-toh).
+The backend json server is hosted on [render.sh](https://angular-toh.onrender.com).
 
-The demo is at [Angular Toh](https://phucnguyen81.github.io/angular-toh).
+The main changes are:
+- Updated to Angular 16
+- Add signal and error handling
+- Replace the in-memory-data-service with a json server
+- Deploy to GitHub Pages
+
+With the addition of signal, Angular provides a clear picture for component communication and state management:
+- `@Input/@Output` for local/short distance, `Service` for global/long distance
+- `signal` for internal state, and `RxJS` for external state
 
 ## Project setup
 
@@ -11,16 +20,16 @@ The demo is at [Angular Toh](https://phucnguyen81.github.io/angular-toh).
 - Install [direnv](https://direnv.net/)
 - Go to this directory, direnv will use nvm to activate the correct node version
 - Install `npx` with `npm install -g npx`
-- Install dependencies with `npx npm@9.6.6 install` (npm version is in package.json)
+- Install dependencies with `npx npm@9.6.6 install` (npm preferred version is in package.json)
 
 ## Development
 
-- Run `npm run start:api` to start the api server.
-- Run `npm run start` to start the Angular dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Run `npm run dev:api` to start the api server.
+- Run `npm run dev:start` to start the Angular dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Deploy to GitHub Pages
+## Deployment
 
-- Run `npm deploy` to deploy to GitHub Pages
+- Run `npm run prod:deploy` to deploy to GitHub Pages
 
 ## Code scaffolding
 
@@ -40,4 +49,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
