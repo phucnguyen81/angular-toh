@@ -13,7 +13,7 @@ It uses npm version `9.5.1`.
 
 ## Development
 
-- Run `npm run api` to start the api server.
+- Run `npm run start:api` to start the api server.
 - Run `npm run start` to start the Angular dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding

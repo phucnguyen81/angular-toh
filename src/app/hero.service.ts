@@ -4,18 +4,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { environment } from './../environments/environment';
 import { AppAlertService } from './app-alert.service';
 import { Hero } from './hero';
 
 @Injectable()
 export class HeroService {
-  private mockUrl = 'http://localhost:3000'
-  private mockHeroesUrl = `${this.mockUrl}/heroes`
+
+  readonly apiUrl = environment.apiUrl;
+  readonly apiHeroesUrl = `${this.apiUrl}/heroes`;
 
   constructor(private http: HttpClient, private alert: AppAlertService) { }
 
   getHeroes(): Observable<Hero[]> {
-    return this.alert.handleError(this.http.get<Hero[]>(this.mockHeroesUrl));
+    return this.alert.handleError(this.http.get<Hero[]>(this.apiHeroesUrl));
   }
 
   search(term: string): Observable<Hero[]> {
@@ -26,14 +28,14 @@ export class HeroService {
 
   getHero(id: number): Observable<Hero> {
     return this.alert.handleError(
-      this.http.get<Hero>(`${this.mockHeroesUrl}/${id}`)
+      this.http.get<Hero>(`${this.apiHeroesUrl}/${id}`)
     );
   }
 
   delete(hero: Hero) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    const url = `${this.mockHeroesUrl}/${hero.id}`;
+    const url = `${this.apiHeroesUrl}/${hero.id}`;
     return this.alert.handleError(this.http.delete<Hero>(url, { headers }));
   }
 
@@ -47,7 +49,7 @@ export class HeroService {
       'Content-Type': 'application/json'
     });
     return this.alert.handleError(
-      this.http.post<Hero>(this.mockHeroesUrl, hero, { headers })
+      this.http.post<Hero>(this.apiHeroesUrl, hero, { headers })
     );
   }
 
@@ -55,7 +57,7 @@ export class HeroService {
   private put(hero: Hero) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    const url = `${this.mockHeroesUrl}/${hero.id}`;
+    const url = `${this.apiHeroesUrl}/${hero.id}`;
     return this.alert.handleError(this.http.put<Hero>(url, hero, { headers }));
   }
 }
