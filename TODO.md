@@ -1,5 +1,0 @@
-- [ ] Add production environment that uses render.sh api
-  - Run on local: use the local api url
-  - Run on render.sh: use the render.sh api url 
-- CI pipeline
-- CD pipeline
