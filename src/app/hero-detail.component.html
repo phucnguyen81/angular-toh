@@ -1,9 +1,9 @@
 <div *ngIf="hero">
   <h2>{{hero.name}} details!</h2>
-  <div *ngIf="editMode"><label>id: </label>{{hero.id}}</div>
+  <div *ngIf="editMode">Id: {{hero.id}}</div>
   <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name" />
+    <label for="hero-name">name: </label>
+    <input name="hero-name" [(ngModel)]="hero.name" placeholder="name" />
   </div>
   <button *ngIf="editMode" (click)="goBack()">Back</button>
   <button (click)="save()">Save</button>

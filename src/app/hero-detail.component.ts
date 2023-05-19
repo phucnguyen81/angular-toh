@@ -12,9 +12,11 @@ import { HeroService } from './hero.service';
 })
 export class HeroDetailComponent extends BaseComponent implements OnInit {
   @Input() hero: Hero = new Hero();  // the hero to edit or create
-  @Input() saveHeroComplete = (hero?: Hero) => { };  // called after a hero is created successfully
+  @Input() saveHeroComplete = () => {
+    // called after a hero is created successfully
+    // do nothing by default
+  };
   @Input() editMode = false;  // edit or create?
-  error: any;
 
   constructor(
     private heroService: HeroService,
@@ -36,7 +38,7 @@ export class HeroDetailComponent extends BaseComponent implements OnInit {
     this.subUntilDestroy(this.heroService.save(this.hero), {
       next: (hero) => {
         this.hero = hero;  // saved hero, with id if new
-        this.saveHeroComplete(hero);
+        this.saveHeroComplete();
         if (this.editMode) { this.goBack(); }
       }
     });

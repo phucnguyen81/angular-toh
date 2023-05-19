@@ -17,7 +17,7 @@ export class HeroesComponent extends BaseComponent implements OnInit {
   selectedHero = computed<Hero | null>(() => (
     this.addingHero() ? null : this.lastSelectedHero()
   ));
-  error: any;
+  error: object = {};
   showNgFor = false;
 
   constructor(private router: Router, private heroService: HeroService) { super(); }
@@ -50,10 +50,10 @@ export class HeroesComponent extends BaseComponent implements OnInit {
     this.getHeroes();
   }
 
-  deleteHero(hero: Hero, event: any): void {
+  deleteHero(hero: Hero, event: Event): void {
     event.stopPropagation();
     this.heroService.delete(hero).subscribe({
-      next: (res) => {
+      next: () => {
         if (this.lastSelectedHero() === hero) {
           this.lastSelectedHero.set(null);
         }

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { signal, computed, Injectable } from '@angular/core';
-import { EMPTY, Observable, catchError } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 
 @Injectable()
 export class AppAlertService {
@@ -16,9 +16,14 @@ export class AppAlertService {
   close() { this.show.set(false); }
 
   handleError<T>(obs: Observable<T>): Observable<T> {
-    return obs.pipe(catchError((error: HttpErrorResponse | any) => {
-      this.open(error.error || error.body.error || 'Server error');
-      return EMPTY;
+    return obs.pipe(catchError((error: HttpErrorResponse | object) => {
+      if (error instanceof HttpErrorResponse) {
+        this.open(error.message);
+      }
+      else {
+        this.open(String(error));
+      }
+      return obs;
     }));
   }
 }
