@@ -1,3 +1,6 @@
-- Fix cold start issue with `render.sh`
-- Local CI pipeline 
-- CD pipeline ? auto deploy to github pages
+- [x] Fix cold start issue with `render.sh`
+  - Show loading indicator while waiting for the server to start
+- Local CI pipeline (docker-compose ?)
+  - A reference: https://github.com/LukasMarx/angular-docker
+- Use pagination for heroes list (see [json-server doc](https://www.npmjs.com/package/json-server))
+- Center the UI

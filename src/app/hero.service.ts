@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import * as rx from 'rxjs';
+import * as op from 'rxjs/operators';
 
 import { environment } from './../environments/environment';
 import { AppAlertService } from './app-alert.service';
 import { Hero } from './hero';
+
 
 @Injectable()
 export class HeroService {
@@ -16,18 +17,27 @@ export class HeroService {
 
   constructor(private http: HttpClient, private alert: AppAlertService) { }
 
-  getHeroes(): Observable<Hero[]> {
-    console.log('getHeroes', this.apiHeroesUrl);
-    return this.alert.handleError(this.http.get<Hero[]>(this.apiHeroesUrl));
+  getHeroes(): rx.Observable<Hero[]> {
+    return this.alert.handleError(
+      rx.defer(() => {
+        this.alert.open('Loading heroes...');  // show loading message
+        return this.http.get<Hero[]>(this.apiHeroesUrl);
+      }).pipe(
+        op.finalize(() => setTimeout(
+          () => { this.alert.close(); }  // close loading message on completion
+          , 500  // open at least a bit before closing
+        ))
+      )
+    )
   }
 
-  search(term: string): Observable<Hero[]> {
-    return this.getHeroes().pipe(map(heroes => heroes.filter(
+  search(term: string): rx.Observable<Hero[]> {
+    return this.getHeroes().pipe(op.map(heroes => heroes.filter(
       hero => hero.name?.toLowerCase().includes(term?.toLowerCase())
     )));
   }
 
-  getHero(id: number): Observable<Hero> {
+  getHero(id: number): rx.Observable<Hero> {
     return this.alert.handleError(
       this.http.get<Hero>(`${this.apiHeroesUrl}/${id}`)
     );
