@@ -1,18 +1,25 @@
 {
   "name": "angular-toh",
   "version": "0.0.1",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "dev:api": "json-server --watch db.json --configuration development --host 0 --port 3000",
     "dev:start": "ng serve --host 0 --port 4200 --configuration development",
     "dev:test": "ng test --configuration development --browsers ChromeHeadless --watch",
     "dev:build": "ng build --watch --configuration development",
+    "ci:test": "ng test --configuration development --browsers ChromeHeadless --watch=false",
     "prod:api": "node index.mjs",
     "prod:build": "ng build --configuration production",
     "prod:deploy": "ng deploy",
     "lint": "ng lint"
   },
-  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run ci:test",
+      "pre-push": "npm run prod:build"
+    }
+  },
   "dependencies": {
     "@angular/animations": "^16.0.0",
     "@angular/common": "^16.0.0",
@@ -41,6 +48,7 @@
     "angular-cli-ghpages": "^1.0.6",
     "cors": "^2.8.5",
     "eslint": "^8.40.0",
+    "husky": "^8.0.3",
     "jasmine-core": "~4.6.0",
     "json-serve": "^0.1.0",
     "json-server": "^0.17.3",
