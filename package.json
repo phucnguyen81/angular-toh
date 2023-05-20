@@ -12,13 +12,8 @@
     "prod:api": "node index.mjs",
     "prod:build": "ng build --configuration production",
     "prod:deploy": "ng deploy",
-    "lint": "ng lint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run ci:test",
-      "pre-push": "npm run prod:build"
-    }
+    "lint": "ng lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@angular/animations": "^16.0.0",
@@ -48,7 +43,7 @@
     "angular-cli-ghpages": "^1.0.6",
     "cors": "^2.8.5",
     "eslint": "^8.40.0",
-    "husky": "^8.0.3",
+    "husky": "^8.0.0",
     "jasmine-core": "~4.6.0",
     "json-serve": "^0.1.0",
     "json-server": "^0.17.3",
