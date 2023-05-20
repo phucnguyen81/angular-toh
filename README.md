@@ -26,6 +26,8 @@ With the addition of signal, Angular provides a clear picture for component comm
 
 - Run `npm run dev:api` to start the api server.
 - Run `npm run dev:start` to start the Angular dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Run `npm run lint` to to lint codes
+- Run `npm run dev:test` to run local CI tests
 
 ## Deployment
 
