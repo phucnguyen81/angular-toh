@@ -1,3 +1,4 @@
+- Install husky to run pre-commit hooks
 - Local CI pipeline (docker-compose ?)
   - A reference: https://github.com/LukasMarx/angular-docker
 - Use pagination for heroes list (see [json-server doc](https://www.npmjs.com/package/json-server))
