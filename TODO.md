@@ -1,5 +1,4 @@
-- [x] Install husky to run pre-commit hooks
-- [x] Remove husky entries from package.json (it does not work yet)
+- [ ] Move TODO to GitHub issues
 - Use pagination for heroes list (see [json-server doc](https://www.npmjs.com/package/json-server))
 - Improve loading message UX
 - Center the UI
