@@ -1,5 +1,0 @@
-- [ ] Move TODO to GitHub issues
-- Use pagination for heroes list (see [json-server doc](https://www.npmjs.com/package/json-server))
-- Improve loading message UX
-- Center the UI
-- See how to run husky pre-commit hooks by using `package.json` only (see https://github.com/devarnab/angular-with-pre-commit-hooks)
