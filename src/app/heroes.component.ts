@@ -17,7 +17,7 @@ export class HeroesComponent extends BaseComponent implements OnInit {
   selectedHero = computed<Hero | null>(() => (
     this.addingHero() ? null : this.lastSelectedHero()
   ));
-  error: object = {};
+  error: object | null = null;
   showNgFor = false;
 
   constructor(private router: Router, private heroService: HeroService) { super(); }

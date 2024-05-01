@@ -9,7 +9,7 @@
   </li>
 </ul>
 
-<div class="error" *ngIf="error">{{error}}</div>
+<div class="error" *ngIf="error">{{ error | json }}</div>
 <button (click)="addHero()">Add New Hero</button>
 <div *ngIf="addingHero()">
   <app-hero-detail [saveHeroComplete]="saveHeroComplete"></app-hero-detail>
