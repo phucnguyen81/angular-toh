@@ -1,22 +1,36 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { BaseComponent } from './base.component';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
+/**
+ * This is a standalone component that does not belong to any modules. Since it
+ * is standalone, it needs to explicitly import other components/modules to use
+ * them. Also, other components/modules need to import this to use it.
+ */
 @Component({
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css'],
 })
 export class HeroDetailComponent extends BaseComponent implements OnInit {
-  @Input() hero: Hero = new Hero();  // the hero to edit or create
+
+  // The hero to edit or create
+  @Input() hero: Hero = new Hero();
+
   @Input() saveHeroComplete = () => {
-    // called after a hero is created successfully
-    // do nothing by default
+    // Called after a hero is created successfully
+    // Do nothing by default
   };
-  @Input() editMode = false;  // edit or create?
+
+  // Is this used to edit or create a hero?
+  @Input() editMode = false;
 
   constructor(
     private heroService: HeroService,
@@ -24,6 +38,7 @@ export class HeroDetailComponent extends BaseComponent implements OnInit {
   ) { super(); }
 
   ngOnInit(): void {
+    // fetch the hero to edit from route parameter
     this.route.params.forEach((params: Params) => {
       // If a hero id is provided, we are editing an existing hero.
       if (params['id'] !== undefined) {

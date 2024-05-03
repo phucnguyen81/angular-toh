@@ -19,6 +19,7 @@ import { HeroSearchComponent } from './hero-search.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    HeroDetailComponent,
   ],
   declarations: [
     AppComponent,
@@ -26,7 +27,6 @@ import { HeroSearchComponent } from './hero-search.component';
     DashboardComponent,
     HeroSearchComponent,
     HeroesComponent,
-    HeroDetailComponent,
   ],
   providers: [HeroService, AppAlertService],
   bootstrap: [AppComponent]

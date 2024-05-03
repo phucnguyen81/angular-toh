@@ -33,6 +33,10 @@ With the addition of signal, Angular provides a clear picture for component comm
 
 - Run `npm run prod:deploy` to deploy to GitHub Pages
 
+## Notes
+
+- This project uses commit hook so commits might be slower than usual
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
