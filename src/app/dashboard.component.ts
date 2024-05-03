@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BaseComponent } from './base.component';
@@ -11,13 +11,14 @@ import { HeroService } from './hero.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent extends BaseComponent implements OnInit {
+
+  private readonly heroService = inject(HeroService);
+  private readonly router = inject(Router);
+
   readonly heroes: Hero[] = [];
 
-  constructor(private router: Router, private heroService: HeroService) {
-    super();
-  }
-
   ngOnInit(): void {
+    // select some random heroes for the Dashboard
     this.subUntilDestroy(this.heroService.getHeroes(), {
       next: (heroes) => {
         const heroesToShow = Math.min(4, heroes.length);
