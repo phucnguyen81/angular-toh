@@ -17,7 +17,7 @@ import { HeroService } from './hero.service';
   imports: [CommonModule, FormsModule],
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.css'],
+  styleUrls: ['./hero-detail.component.scss'],
 })
 export class HeroDetailComponent extends BaseComponent implements OnInit {
 
