@@ -13,11 +13,11 @@ import { HeroService } from './hero.service';
  * them. Also, other components/modules need to import this to use it.
  */
 @Component({
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.scss'],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
 })
 export class HeroDetailComponent extends BaseComponent implements OnInit {
 
