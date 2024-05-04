@@ -1,12 +1,12 @@
 import {
   Component,
-  Directive,
-  Input,
-  TemplateRef,
   ContentChild,
+  Directive,
   HostBinding,
   HostListener,
   inject,
+  Input,
+  TemplateRef,
 } from '@angular/core';
 
 @Directive({
@@ -32,7 +32,7 @@ let nextId = 0;
   selector: '[appZippyContent]',
 })
 export class ZippyContentDirective {
-  constructor(public templateRef: TemplateRef<unknown>) { }
+  public readonly templateRef = inject(TemplateRef<unknown>);
 }
 
 @Component({

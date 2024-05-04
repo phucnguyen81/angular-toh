@@ -1,3 +1,8 @@
+/**
+Content projection gives great flexibility to customize a component.
+However, it also comes with great complexity. In practice, it should be used
+only when the flexibility far outweighs the cost.
+ */
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
