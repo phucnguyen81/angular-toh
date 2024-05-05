@@ -1,18 +1,22 @@
 # AngularToh
 
-This is an updated version of the [Tour of Heroes](https://angular.io/tutorial/tour-of-heroes) tutorial.
-The frontend is hosted on [GitHub Pages](https://phucnguyen81.github.io/angular-toh).
-The backend json server is hosted on [render.sh](https://angular-toh.onrender.com).
+Learning Angular from the orginal [Tour of Heroes](https://angular.io/tutorial/tour-of-heroes) tutorial.
 
-The main changes are:
+The frontend is hosted on [GitHub Pages](https://phucnguyen81.github.io/angular-toh).
+The backend json server is hosted on [render.sh](https://angular-toh.onrender.com) **(currenlty disabled)**.
+
 - Updated to Angular 16
 - Add signal and error handling
 - Replace the in-memory-data-service with a json server
 - Deploy to GitHub Pages
 
-With the addition of signal, Angular provides a clear picture for component communication and state management:
-- `@Input/@Output` for local/short distance, `Service` for global/long distance
-- `signal` for internal state, and `RxJS` for external state
+With the addition of signal, Angular provides a clearer picture:
+-  Component communication:
+   -  `@Input/@Output` for local/short distance
+   -  `Service` for global/long distance
+-  State management:
+   - `signal` for internal state
+   - `RxJS` for external state
 
 ## Project setup
 
