@@ -10,7 +10,7 @@ import { AppAlertService } from './app-alert.service';
 import { HeroService } from './hero.service';
 import { DashboardComponent } from './dashboard.component';
 import { HeroesComponent } from './heroes.component';
-import { HeroDetailComponent } from './hero-detail.component';
+import { HeroDetailComponent } from './hero-detail';
 import { HeroSearchComponent } from './hero-search.component';
 
 @NgModule({

@@ -3,9 +3,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { BaseComponent } from './base.component';
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { BaseComponent } from '../base.component';
+import { Hero } from '../hero';
+import { HeroService } from '../hero.service';
 
 /**
  * This is a standalone component that does not belong to any modules. Since it
