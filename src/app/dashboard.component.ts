@@ -17,6 +17,10 @@ export class DashboardComponent extends BaseComponent implements OnInit {
 
   readonly heroes: Hero[] = [];
 
+  get loading(): boolean {
+    return this.heroService.loading();
+  }
+
   ngOnInit(): void {
     // select some random heroes for the Dashboard
     this.subUntilDestroy(this.heroService.getHeroes(), {

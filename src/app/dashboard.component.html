@@ -1,4 +1,5 @@
 <h3>Heroes of the day</h3>
+<p *ngIf="loading">Loading heroes...</p>
 <div class="grid grid-pad">
   <div *ngFor="let hero of heroes" class="col-1-4">
     <button

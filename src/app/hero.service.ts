@@ -1,5 +1,5 @@
+import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 
 import * as rx from 'rxjs';
 import * as op from 'rxjs/operators';
@@ -8,33 +8,43 @@ import { environment } from './../environments/environment';
 import { AppAlertService } from './app-alert.service';
 import { Hero } from './hero';
 
-
 @Injectable()
 export class HeroService {
+  private readonly http = inject(HttpClient);
+  private readonly alert = inject(AppAlertService);
+
+  readonly loading = signal<boolean>(false);
 
   readonly apiUrl = environment.apiUrl;
   readonly apiHeroesUrl = `${this.apiUrl}/heroes`;
 
-  constructor(private http: HttpClient, private alert: AppAlertService) { }
-
   getHeroes(): rx.Observable<Hero[]> {
+    let getHeroes: rx.Observable<Hero[]> = this.http.get<Hero[]>(
+      this.apiHeroesUrl
+    );
+    if (!environment.production) {
+      // simulate network latency
+      getHeroes = getHeroes.pipe(op.delay(1000));
+    }
+
     return this.alert.handleError(
-      rx.defer(() => {
-        this.alert.open('Loading heroes...');  // show loading message
-        return this.http.get<Hero[]>(this.apiHeroesUrl);
-      }).pipe(
-        op.finalize(() => setTimeout(
-          () => { this.alert.close(); }  // close loading message on completion
-          , 500  // open at least a bit before closing
-        ))
-      )
-    )
+      rx
+        .defer(() => {
+          this.loading.set(true);
+          return getHeroes;
+        })
+        .pipe(op.finalize(() => this.loading.set(false)))
+    );
   }
 
   search(term: string): rx.Observable<Hero[]> {
-    return this.getHeroes().pipe(op.map(heroes => heroes.filter(
-      hero => hero.name?.toLowerCase().includes(term?.toLowerCase())
-    )));
+    return this.getHeroes().pipe(
+      op.map((heroes) =>
+        heroes.filter((hero) =>
+          hero.name?.toLowerCase().includes(term?.toLowerCase())
+        )
+      )
+    );
   }
 
   getHero(id: number): rx.Observable<Hero> {
@@ -57,7 +67,7 @@ export class HeroService {
   // Add new Hero
   private post(hero: Hero) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     });
     return this.alert.handleError(
       this.http.post<Hero>(this.apiHeroesUrl, hero, { headers })

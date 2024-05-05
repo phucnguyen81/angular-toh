@@ -40,6 +40,10 @@ export class HeroesComponent extends BaseComponent implements OnInit {
     });
   }
 
+  get loading(): boolean {
+    return this.heroService.loading();
+  }
+
   onSelect(hero: Hero): void {
     this.lastSelectedHero.set(hero);
   }

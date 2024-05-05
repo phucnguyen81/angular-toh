@@ -11,6 +11,7 @@
   <button (click)="gotoDetail(hero)">View Details</button>
 </div>
 
+<p *ngIf="loading">Loading heroes...</p>
 <ul class="heroes">
   <li *ngFor="let hero of heroes" [class.selected]="isSelected(hero)">
     <span class="badge">{{ hero.id }}</span>
