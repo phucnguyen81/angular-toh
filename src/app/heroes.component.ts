@@ -1,6 +1,7 @@
-import { Component, OnInit, signal, computed } from '@angular/core';
+import { Component, OnInit, signal, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AppContextService } from './app-context.service';
 import { BaseComponent } from './base.component';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
@@ -11,16 +12,22 @@ import { HeroService } from './hero.service';
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent extends BaseComponent implements OnInit {
+
+  private readonly router = inject(Router);
+  private readonly appContext = inject(AppContextService);
+  private readonly heroService = inject(HeroService);
+
   heroes: Hero[] = [];
+
   addingHero = signal<boolean>(false);
-  lastSelectedHero = signal<Hero | null>(null);
+
+  lastSelectedHero = signal<Hero | null>(this.appContext.hero());
+
   selectedHero = computed<Hero | null>(() => (
     this.addingHero() ? null : this.lastSelectedHero()
   ));
-  error: object | null = null;
-  showNgFor = false;
 
-  constructor(private router: Router, private heroService: HeroService) { super(); }
+  error: object | null = null;
 
   ngOnInit(): void {
     this.getHeroes();
@@ -35,6 +42,10 @@ export class HeroesComponent extends BaseComponent implements OnInit {
 
   onSelect(hero: Hero): void {
     this.lastSelectedHero.set(hero);
+  }
+
+  isSelected(hero: Hero): boolean {
+    return hero?.id == this.lastSelectedHero()?.id;
   }
 
   gotoDetail(hero: Hero): void {

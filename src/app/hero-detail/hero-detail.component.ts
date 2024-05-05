@@ -1,11 +1,12 @@
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { BaseComponent } from '../base.component';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { AppContextService } from '../app-context.service';
 
 /**
  * This is a standalone component that does not belong to any modules. Since it
@@ -20,6 +21,8 @@ import { HeroService } from '../hero.service';
   imports: [CommonModule, FormsModule],
 })
 export class HeroDetailComponent extends BaseComponent implements OnInit {
+
+  private appContext: AppContextService = inject(AppContextService);
 
   // The hero to edit or create
   @Input() hero: Hero = new Hero();
@@ -44,7 +47,10 @@ export class HeroDetailComponent extends BaseComponent implements OnInit {
       if (params['id'] !== undefined) {
         const id = +params['id'];  // convert id to number
         this.editMode = true;
-        this.heroService.getHero(id).subscribe((hero) => (this.hero = hero));
+        this.heroService.getHero(id).subscribe((hero) => {
+          this.hero = hero;
+          this.appContext.hero.set(hero);
+        });
       }
     });
   }

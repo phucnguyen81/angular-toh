@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppAlertComponent } from './app-alert.component';
 import { AppAlertService } from './app-alert.service';
+import { AppContextService } from './app-context.service';
 import { HeroService } from './hero.service';
 import { DashboardComponent } from './dashboard.component';
 import { HeroesComponent } from './heroes.component';
@@ -28,7 +29,7 @@ import { HeroSearchComponent } from './hero-search.component';
     HeroSearchComponent,
     HeroesComponent,
   ],
-  providers: [HeroService, AppAlertService],
+  providers: [HeroService, AppAlertService, AppContextService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

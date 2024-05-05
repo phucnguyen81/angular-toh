@@ -12,7 +12,7 @@
 </div>
 
 <ul class="heroes">
-  <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero()">
+  <li *ngFor="let hero of heroes" [class.selected]="isSelected(hero)">
     <span class="badge">{{ hero.id }}</span>
     <button class="hero-name ellipses" (click)="onSelect(hero)">
       {{ hero.name }}
