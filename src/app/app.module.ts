@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { APP_CONFIG, DEFAULT_CONFIG } from './app.config';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppAlertComponent } from './app-alert.component';
@@ -29,7 +30,12 @@ import { HeroSearchComponent } from './hero-search.component';
     HeroSearchComponent,
     HeroesComponent,
   ],
-  providers: [HeroService, AppAlertService, AppContextService],
-  bootstrap: [AppComponent]
+  providers: [
+    HeroService,
+    AppAlertService,
+    AppContextService,
+    { provide: APP_CONFIG, useValue: DEFAULT_CONFIG },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

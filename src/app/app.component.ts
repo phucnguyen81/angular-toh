@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+import { AppConfig, APP_CONFIG } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  readonly title = 'Tour of Heroes';
+  // Inject an AppConfig implementation by searching for the APP_CONFIG token.
+  // Note that since AppConfig is an interface it can not be used as lookup key
+  // at runtime
+  private readonly appConfig = inject<AppConfig>(APP_CONFIG);
+
+  readonly title = this.appConfig.title;
 }
