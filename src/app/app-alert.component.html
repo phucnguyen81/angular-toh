@@ -1,4 +1,4 @@
 <div class="alert" *ngIf="alert.display()">
-  <span class="closebtn" (keyup)="alert.close()" tabindex="0">&times;</span>
+  <button class="closebtn" (click)="alert.close()">&times;</button>
   <span>{{alert.message()}}</span>
 </div>
