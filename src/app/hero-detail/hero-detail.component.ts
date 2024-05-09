@@ -5,7 +5,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { BaseComponent } from '../base.component';
 import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { HERO_SERVICE, HeroService } from '../hero.service';
 import { AppContextService } from '../app-context.service';
 
 /**
@@ -21,6 +21,7 @@ import { AppContextService } from '../app-context.service';
   imports: [CommonModule, FormsModule],
 })
 export class HeroDetailComponent extends BaseComponent implements OnInit {
+  private readonly heroService = inject<HeroService>(HERO_SERVICE);
 
   private appContext: AppContextService = inject(AppContextService);
 
@@ -35,10 +36,7 @@ export class HeroDetailComponent extends BaseComponent implements OnInit {
   // Is this used to edit or create a hero?
   @Input() editMode = false;
 
-  constructor(
-    private heroService: HeroService,
-    private route: ActivatedRoute
-  ) { super(); }
+  constructor(private route: ActivatedRoute) { super(); }
 
   ngOnInit(): void {
     // fetch the hero to edit from route parameter

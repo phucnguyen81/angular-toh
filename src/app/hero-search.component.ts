@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Subject, of } from 'rxjs';
@@ -6,7 +6,7 @@ import * as op from 'rxjs/operators';
 
 import { AppAlertService } from './app-alert.service';
 import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { HERO_SERVICE, HeroService } from './hero.service';
 
 @Component({
   selector: 'app-hero-search',
@@ -14,6 +14,8 @@ import { HeroService } from './hero.service';
   styleUrls: ['./hero-search.component.scss'],
 })
 export class HeroSearchComponent {
+  private readonly heroService = inject<HeroService>(HERO_SERVICE);
+
   readonly searchTerms = new Subject<string>();
 
   // hero outputs are driven entirely from user search inputs
@@ -29,7 +31,6 @@ export class HeroSearchComponent {
   );
 
   constructor(
-    private heroService: HeroService,
     private router: Router,
     private alert: AppAlertService,
   ) { }

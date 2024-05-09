@@ -47,6 +47,7 @@ With the addition of signal, Angular provides a clearer picture:
 
 Commit hook:
 This project uses commit hook so commits might be slower than usual.
+The commit hook runs tests and requires running `npm run api` beforehand.
 
 Code scaffolding:
 Run `ng generate component component-name` to generate a new component.

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AppContextService } from './app-context.service';
 import { BaseComponent } from './base.component';
 import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { HERO_SERVICE, HeroService } from './hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -15,7 +15,7 @@ export class HeroesComponent extends BaseComponent implements OnInit {
 
   private readonly router = inject(Router);
   private readonly appContext = inject(AppContextService);
-  private readonly heroService = inject(HeroService);
+  private readonly heroService = inject<HeroService>(HERO_SERVICE);
 
   heroes: Hero[] = [];
 

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { BaseComponent } from './base.component';
 import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { HERO_SERVICE, HeroService } from './hero.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +12,7 @@ import { HeroService } from './hero.service';
 })
 export class DashboardComponent extends BaseComponent implements OnInit {
 
-  private readonly heroService = inject(HeroService);
+  private readonly heroService = inject<HeroService>(HERO_SERVICE);
   private readonly router = inject(Router);
 
   readonly heroes: Hero[] = [];
