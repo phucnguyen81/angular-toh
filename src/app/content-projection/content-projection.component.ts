@@ -6,7 +6,7 @@ only when the flexibility far outweighs the cost.
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ZippyModule } from './zippy';
+import { ZippyModule } from '../zippy';
 
 @Component({
   selector: 'app-content-projection',
