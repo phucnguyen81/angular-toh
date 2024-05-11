@@ -1,3 +1,4 @@
+- Consolidate with [angular-testing](https://github.com/phucnguyen81/angular-testing)
 - Consolidate with [angular-lab](https://github.com/phucnguyen81/angular-lab)
 - Run husky pre-commit hooks by using package.json
   - See: https://github.com/devarnab/angular-with-pre-commit-hooks
