@@ -1,7 +1,9 @@
 <h1 class="title">{{ title }}</h1>
 <div class="header-bar"></div>
+
 <app-alert></app-alert>
-<nav>
+
+<nav class="sidebar">
   <a class="dashboard" routerLink="/dashboard" routerLinkActive="active"
     >Dashboard</a
   >
@@ -13,4 +15,7 @@
     >Content Projection</a
   >
 </nav>
-<router-outlet></router-outlet>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
